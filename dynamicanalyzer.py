@@ -14,6 +14,7 @@ import consts
 def make_avd(name: str,
              system_image='system-images;android-16;google_apis;x86'):
     '''
+    Creates a new Android virtual device with the specified name.
     '''
     subprocess.run([consts.AVDMANAGER, 'create', 'avd',  # Standard create AVD
                     '-n', name,  # Name of the AVD
