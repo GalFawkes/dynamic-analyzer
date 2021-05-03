@@ -1,5 +1,6 @@
-# App specific consts file
+# App specific file
 consts.py
+*.pcap
 
 # Visual Studio Code
 .vscode/
