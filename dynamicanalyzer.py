@@ -3,20 +3,18 @@ import subprocess
 import consts
 
 '''
-D:\Android\Sdk\emulator> avdmanager create avd -p '<PATH>' -n '<NAME>' -k 'system-images;android-16;google_apis;x86' -d 21 -f
-D:\Android\Sdk\emulator> .\emulator.exe -avd <NAME> (-verbose) -tcpdump '<PATH TO FILE (all folders must exist)>'
-D:\Android\Sdk\platform-tools> .\adb.exe install '<PATH TO APK>'
 <TODO: OPEN APP>
 <TODO: monkey inputs>
-D:\Android\Sdk\platform-tools> .\adb.exe emu kill
 '''
+# shell=True is some hackery to make this stuff play nice on Windows, I think
 
 
-def make_avd(name):
-    subprocess.run([consts.AVDMANAGER, 'create', 'avd',
-                    '-n', name,
-                    '-k', 'system-images;android-16;google_apis;x86',
-                    '-d', '21', '-f'], shell=True)
+def make_avd(name, system_image='system-images;android-16;google_apis;x86'):
+    subprocess.run([consts.AVDMANAGER, 'create', 'avd',  # Standard create AVD
+                    '-n', name,  # Name of the AVD
+                    '-k', system_image,  # system image type, default is 16 x86
+                    '-d', '21',  # Using Google Pixel 3a
+                    '-f'], shell=True)  # Override existing
 
 
 def start_emulator(device_name, pcap_path='netcap.pcap'):
