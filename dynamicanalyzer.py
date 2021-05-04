@@ -34,8 +34,8 @@ def start_emulator(device_name: str,
     '''
     daemon = subprocess.Popen([consts.EMULATOR,
                                '-avd', device_name,  # the name of the device
-                               '-tcpdump', pcap_path,  # pcap location
-                               '-no-window'],
+                               '-tcpdump', pcap_path],  # pcap location
+                              # '-no-window'],
                               shell=True)
     return daemon
 
